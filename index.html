@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de Confidentialité – Math AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0D0B2E;
+      --surface: #1A1640;
+      --surface-variant: #252052;
+      --primary: #7C4DFF;
+      --accent: #00E5FF;
+      --accent-dark: #00B8D4;
+      --text: #FFFFFF;
+      --text-muted: #B0A8D0;
+      --text-hint: #6B6190;
+      --border: #2D2760;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(124,77,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,229,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border-radius: 16px;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--bg);
+      margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(0,229,255,0.2);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .header .update-date {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text-hint);
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+
+    .section:hover {
+      border-color: rgba(0,229,255,0.3);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-variant);
+      border-radius: 10px;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .section ul li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background: var(--surface-variant);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .footer-text {
+      color: var(--text-hint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px 40px; }
+      .header h1 { font-size: 22px; }
+      .section { padding: 20px; }
+      .section-header h2 { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-logo">Σ</div>
+      <h1>Politique de Confidentialité</h1>
+      <p class="subtitle">Math AI — Assistant Mathématique Intelligent</p>
+      <span class="update-date">Dernière mise à jour : 24 mars 2026</span>
+    </div>
+
+    <!-- Introduction -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📋</div>
+        <h2>Introduction</h2>
+      </div>
+      <p>Math AI (« l'Application ») est développée par Karim El Fathi, développeur mobile indépendant basé au Maroc. Cette politique de confidentialité explique comment nous traitons vos données lors de l'utilisation de l'Application.</p>
+      <div class="highlight-box">
+        <p>🔒 Math AI ne collecte aucune donnée personnelle. Votre vie privée est notre priorité.</p>
+      </div>
+    </div>
+
+    <!-- Données collectées -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📊</div>
+        <h2>Données collectées</h2>
+      </div>
+      <p>Math AI est conçu pour fonctionner avec un minimum de données :</p>
+      <ul>
+        <li><strong>Aucune donnée personnelle</strong> n'est collectée (pas de nom, email, numéro de téléphone, adresse).</li>
+        <li><strong>Aucun compte utilisateur</strong> n'est requis pour utiliser l'application.</li>
+        <li><strong>Stockage local uniquement</strong> — l'historique de vos problèmes résolus est stocké uniquement sur votre appareil via SharedPreferences.</li>
+        <li><strong>Images et textes</strong> — les photos d'exercices envoyées pour analyse transitent via HTTPS vers l'API OpenAI (GPT-4o) et ne sont pas conservées après traitement.</li>
+      </ul>
+    </div>
+
+    <!-- Services tiers -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🔗</div>
+        <h2>Services tiers</h2>
+      </div>
+      <p>Math AI utilise le service suivant :</p>
+      <ul>
+        <li><strong>OpenAI (GPT-4o)</strong> — pour analyser les images d'exercices et fournir des résolutions mathématiques. Les données envoyées (images, textes) sont traitées conformément à la <a href="https://openai.com/policies/privacy-policy" class="contact-link" target="_blank">politique de confidentialité d'OpenAI</a>. Aucune donnée n'est conservée par OpenAI via les appels API.</li>
+      </ul>
+      <p>L'application ne contient aucune publicité et n'utilise aucun outil de suivi ou d'analyse (pas de Firebase Analytics, pas de Google Analytics, pas de trackers).</p>
+    </div>
+
+    <!-- Stockage des données -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">💾</div>
+        <h2>Stockage des données</h2>
+      </div>
+      <ul>
+        <li><strong>Historique des problèmes</strong> — stocké localement sur votre appareil. Vos données ne transitent pas par nos serveurs.</li>
+        <li><strong>Préférences</strong> — votre nom d'affichage et vos paramètres sont stockés localement.</li>
+        <li><strong>Suppression</strong> — vous pouvez effacer tout votre historique depuis l'écran Compte → Effacer l'historique.</li>
+      </ul>
+    </div>
+
+    <!-- Protection des mineurs -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">👦</div>
+        <h2>Protection des mineurs</h2>
+      </div>
+      <p>Math AI est conçu pour aider les élèves et étudiants dans leurs exercices de mathématiques. Nous prenons la protection des mineurs très au sérieux :</p>
+      <ul>
+        <li>Nous ne collectons aucune information personnelle identifiable des enfants.</li>
+        <li>Aucun compte utilisateur n'est requis pour utiliser l'application.</li>
+        <li>Les images et textes envoyés à OpenAI sont utilisés uniquement pour résoudre des exercices mathématiques.</li>
+        <li>Nous recommandons aux parents de superviser l'utilisation de l'application par les enfants de moins de 13 ans.</li>
+      </ul>
+    </div>
+
+    <!-- Sécurité -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🛡️</div>
+        <h2>Sécurité</h2>
+      </div>
+      <ul>
+        <li>Toutes les communications avec l'API OpenAI sont chiffrées via <strong>HTTPS/TLS</strong>.</li>
+        <li>Aucun serveur intermédiaire n'est utilisé — les requêtes vont directement de votre appareil vers OpenAI.</li>
+        <li>Aucune donnée n'est partagée avec des tiers en dehors d'OpenAI pour le traitement IA.</li>
+      </ul>
+    </div>
+
+    <!-- Vos droits -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">⚖️</div>
+        <h2>Vos droits</h2>
+      </div>
+      <p>Conformément au RGPD et aux lois applicables, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> — consulter les données stockées localement sur votre appareil dans l'application.</li>
+        <li><strong>Droit de suppression</strong> — effacer tout l'historique via l'écran Compte de l'application.</li>
+        <li><strong>Droit d'opposition</strong> — cesser d'utiliser l'application à tout moment.</li>
+      </ul>
+    </div>
+
+    <!-- Modifications -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🔄</div>
+        <h2>Modifications de cette politique</h2>
+      </div>
+      <p>Nous pouvons mettre à jour cette politique de confidentialité. En cas de modification importante, nous mettrons à jour la date en haut de cette page. Nous vous encourageons à consulter régulièrement cette page.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">✉️</div>
+        <h2>Nous contacter</h2>
+      </div>
+      <p>Pour toute question concernant cette politique de confidentialité ou l'utilisation de vos données, vous pouvez nous contacter à :</p>
+      <p><a href="mailto:elfathi.karim.it@gmail.com" class="contact-link">elfathi.karim.it@gmail.com</a></p>
+    </div>
+
+    <footer>
+      <div class="footer-logo">Math AI</div>
+      <p class="footer-text">© 2026 Math AI. Tous droits réservés.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
