@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suppression des données – Sigma AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0D0B2E;
+      --surface: #1A1640;
+      --surface-variant: #252052;
+      --primary: #7C4DFF;
+      --accent: #00E5FF;
+      --accent-dark: #00B8D4;
+      --text: #FFFFFF;
+      --text-muted: #B0A8D0;
+      --text-hint: #6B6190;
+      --border: #2D2760;
+      --success: #00E676;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(124,77,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,229,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border-radius: 16px;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--bg);
+      margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(0,229,255,0.2);
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+
+    .section:hover {
+      border-color: rgba(0,229,255,0.3);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-variant);
+      border-radius: 10px;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .section p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .section ul li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .highlight {
+      background: var(--surface-variant);
+      border-left: 3px solid var(--success);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight p {
+      color: var(--text);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--bg);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .email-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 12px;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(0,229,255,0.25);
+    }
+
+    .email-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .footer-text {
+      color: var(--text-hint);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px 40px; }
+      .header h1 { font-size: 22px; }
+      .section { padding: 20px; }
+      .section-header h2 { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-logo">Σ</div>
+      <h1>Suppression des données</h1>
+      <p class="subtitle">Sigma AI — Assistant Mathématique Intelligent</p>
+    </div>
+
+    <!-- Méthode 1 : Dans l'app -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">📱</div>
+        <h2>Depuis l'application (recommandé)</h2>
+      </div>
+      <p>Vous pouvez supprimer toutes vos données directement depuis l'application :</p>
+      <ol class="steps">
+        <li>Ouvrez <strong>Sigma AI</strong></li>
+        <li>Allez dans l'onglet <strong>Compte</strong></li>
+        <li>Appuyez sur <strong>« Effacer l'historique »</strong></li>
+        <li>Confirmez la suppression</li>
+      </ol>
+      <div class="highlight">
+        <p>✅ Cette action supprime immédiatement et définitivement tout votre historique de problèmes résolus et vos préférences stockés sur votre appareil.</p>
+      </div>
+    </div>
+
+    <!-- Méthode 2 : Par email -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">✉️</div>
+        <h2>Par e-mail</h2>
+      </div>
+      <p>Si vous souhaitez nous contacter pour toute demande relative à la suppression de vos données, envoyez un e-mail à :</p>
+      <a href="mailto:elfathi.karim.it@gmail.com?subject=Demande de suppression de données – Sigma AI" class="email-btn">
+        ✉️ elfathi.karim.it@gmail.com
+      </a>
+      <p style="margin-top: 16px;">Nous répondrons à votre demande dans un délai de <strong>7 jours ouvrables</strong>.</p>
+    </div>
+
+    <!-- Types de données supprimées -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🗂️</div>
+        <h2>Types de données supprimées</h2>
+      </div>
+      <ul>
+        <li><strong>Historique des problèmes</strong> — tous les exercices mathématiques résolus et leurs corrections étape par étape</li>
+        <li><strong>Messages du chat</strong> — l'historique des conversations avec l'IA mathématique</li>
+        <li><strong>Formules favorites</strong> — les formules marquées en favori</li>
+        <li><strong>Préférences</strong> — nom affiché, niveau scolaire et paramètres personnalisés</li>
+      </ul>
+    </div>
+
+    <!-- Données conservées -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">🔒</div>
+        <h2>Données conservées après suppression</h2>
+      </div>
+      <p>Après suppression, <strong>aucune donnée</strong> n'est conservée par Sigma AI. L'application ne dispose d'aucune base de données distante ni de compte utilisateur.</p>
+      <p>Concernant OpenAI : les données transmises à l'API OpenAI pour l'analyse des exercices sont traitées selon la <a href="https://openai.com/policies/privacy-policy" class="contact-link" target="_blank">politique de confidentialité d'OpenAI</a>.</p>
+      <div class="highlight">
+        <p>ℹ️ Sigma AI ne possède pas de serveur backend. Toutes vos données sont stockées localement sur votre appareil uniquement.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-logo">Sigma AI</div>
+      <p class="footer-text">© 2026 Sigma AI. Tous droits réservés.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
